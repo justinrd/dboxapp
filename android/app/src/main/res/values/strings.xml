@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Dbox</string>
+    <string name="title_activity_main">Dbox</string>
+    <string name="package_name">com.debox.app</string>
+    <string name="custom_url_scheme">com.debox.app</string>
+</resources>

@@ -1,0 +1,40 @@
+<ion-content class="vh-90 container">
+<ion-grid [fixed]="true">
+  <ion-row class="ion-text-center">
+    <ion-col size="12">
+      <ion-text class="black fs-1"><h1><strong>Iniciar sesión</strong></h1></ion-text>
+    </ion-col>
+    <ion-col size="12">
+      <ion-text class="grey fs-07">Ingresa tu usuario y contraseña para acceder</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="mt-1">
+    <ion-col size="12">
+      <ion-input placeholder="Usuario" fill="outline" class="formLogin" [(ngModel)]="form.userName"></ion-input>
+    </ion-col>
+    <ion-col size="12">
+      <ion-input placeholder="Contraseña" fill="outline" class="formLogin" type="password" [(ngModel)]="form.password"></ion-input>
+    </ion-col>
+    <ion-col size="12" class="ion-text-center" *ngIf="loginError">
+      <ion-text color="danger" class="fs-07">{{loginErrorMessage}}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-text-center">
+    <ion-col size="12">
+      <ion-button class="no-shadow circle" expand="full" shape="round" (click)="login()" [disabled]="tryLogin">Iniciar sesión</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row class="ion-text-center">
+    <ion-col size="12">
+      <ion-text class="fs-08" color="primary">Olvidaste tu contraseña</ion-text>
+    </ion-col>
+  </ion-row> -->
+
+</ion-grid>
+
+
+
+</ion-content>

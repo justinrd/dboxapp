@@ -1,0 +1,52 @@
+<div id="container">
+  <div class="toolbar">
+    <ion-grid>
+      <ion-row>
+        <ion-col>{{now | date: 'dd-MM-yyy'}}</ion-col>
+        <ion-col><ion-toggle [(ngModel)]="isActive" (ngModelChange)="changeStatus()" [disabled]="true">{{isActive == true ? 'Activo' : 'Inactivo'}}</ion-toggle></ion-col>
+      </ion-row>
+    </ion-grid>  
+  </div>
+  <div class="content">
+    
+    <ion-grid>
+      <div *ngIf="tasks.length > 0" >
+        <ion-row *ngFor="let task of tasks">
+          <ion-col>
+            <ion-card (click)="openDetail(task.task_id)">
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row class="detail">
+                    <ion-col> <strong>ID:</strong> #{{task.task_id}}</ion-col>
+                  </ion-row>
+                  <ion-row class="detail">
+                    <ion-col> <strong>Entrega:</strong> {{task.delivery_date | date: 'dd-MM-yyyy hh:mm a'}} <ion-chip color="success">{{task.trans_type_raw}}</ion-chip> </ion-col>
+                  </ion-row>
+                  <ion-row class="detail">
+                    <ion-col> <strong>Cliente:</strong> {{task.customer_name}}</ion-col>
+                  </ion-row>
+                  <ion-row class="detail">
+                    <ion-col> <strong>Ubicación:</strong> {{task.delivery_address == '' ? 'No registrado' : task.delivery_address}}</ion-col>
+                  </ion-row>
+                  <ion-row class="detail">  
+                    <ion-col> <strong>Estado:</strong> <ion-chip color="warning">{{task.status}}</ion-chip></ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </div>
+
+     <div *ngIf="tasks.length < 1" class="text-center nodata">
+      <ion-row>
+        <p>No hay tareas por ahora, pero puedes recargar para revisar.</p>
+      </ion-row>
+      <ion-button (click)="loadTasks()">Recargar</ion-button>
+     </div>
+
+    </ion-grid>
+
+
+  </div>
+</div>

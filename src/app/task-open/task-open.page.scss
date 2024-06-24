@@ -1,0 +1,23 @@
+#container {
+    margin-top: 50px;
+    background: #fff;
+    height: 100dvh;
+    overflow-y: scroll;
+}
+
+.toolbar{
+    border: 1px solid #ccc;
+    color: #000;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 10px;
+    text-align: center;
+}
+
+.detail{
+    margin: 0!important;
+}
+
+.nodata{
+    color: #000;
+    text-align: center;
+}
