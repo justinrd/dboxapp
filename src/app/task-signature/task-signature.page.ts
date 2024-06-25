@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import SignaturePad from 'signature_pad';
 import { ApiService } from '../services/api.service';
 import { Storage } from '@ionic/storage';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-task-signature',
@@ -18,7 +18,7 @@ export class TaskSignaturePage implements OnInit {
 
   private signUser: string = "";
 
-  constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute, private toastController: ToastController) { }
+  constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute, private toastController: ToastController, private loadingCtrl: LoadingController) { }
 
   @ViewChild("canvas", { static: true }) canvas!: ElementRef;
   sig!: SignaturePad;
@@ -46,14 +46,23 @@ export class TaskSignaturePage implements OnInit {
 
 
   async complete(){
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Validando tu cuenta',
+    });
+  
+    loading.present();
+
     const sessionData = await this.storage.get('token');
     this.signUser = this.sig.toDataURL();
     this.apiService.get('AddSignatureToTask', 'token=' + sessionData['token'] + '&task_id=' + this.id + '&image=' + this.signUser).subscribe({
       next: data => {
-        console.log(data);
+        loading.dismiss();
         this.changeStatus();
         this.router.navigate(['/tabs']);
       }, error: err => {
+        loading.dismiss();
+        this.presentToast('No pudimos obtener los datos en este momento, intenta más tarde');
         console.log(err);
       }
     })
