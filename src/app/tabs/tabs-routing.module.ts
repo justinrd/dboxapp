@@ -12,10 +12,6 @@ const routes: Routes = [
         loadChildren: () => import('../task-open/task-open.module').then(m => m.TaskOpenPageModule)
       },
       {
-        path: 'task-closed',
-        loadChildren: () => import('../task-closed/task-closed.module').then(m => m.TaskClosedPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/task-open',
         pathMatch: 'full'

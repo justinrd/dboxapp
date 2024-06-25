@@ -23,9 +23,10 @@ export class TaskOpenPage implements OnInit {
   constructor(private router: Router, private apiService: ApiService, private toastController: ToastController) { }
 
   async ngOnInit() {
+    this.tasks = [];
+    
     await this.storage.create();
 
-
     const sessionData = await this.storage.get('token');
 
     if(sessionData == null){
@@ -37,25 +38,10 @@ export class TaskOpenPage implements OnInit {
       this.isActive = true;
     }
 
-
     await this.loadTasks()
   }
 
-  async ionViewWillEnter(){
-    const sessionData = await this.storage.get('token');
-
-    if(sessionData == null){
-      this.router.navigate(['login']);
-      return;
-    }
-    
-    if(sessionData['duty_status'] == 1){
-      this.isActive = true;
-    }
-    await this.loadTasks()
-  }
-
-  openDetail(id: string){
+  async openDetail(id: string){
     this.router.navigate(['task-detail/' + id]);
   }
 
@@ -99,5 +85,31 @@ export class TaskOpenPage implements OnInit {
   }
 
 
+  async changeStatusTask(id: string, raw: string) {
+
+    if(raw == 'assigned'){
+      const element = this.tasks.find(
+        (el: any) => el.status_raw === "inprogress"
+      );
+
+      if(element != null){
+        await this.presentToast('Debes completar la tarea que ya has iniciado');
+        return;
+      }
+    }
+
+    const sessionData = await this.storage.get('token');
+    this.apiService.get('ChangeTaskStatus', 'token=' + sessionData['token'] + '&task_id=' + id + '&status_raw=inprogress').subscribe({
+      next: data => {
+        this.result = data;
+        this.tasks = [];
+        this.loadTasks();
+      }, error: _err => {
+        this.presentToast('No pudimos procesar los datos en este momento, intenta más tarde');
+      }
+    })
+
+    
+  }
 
 }

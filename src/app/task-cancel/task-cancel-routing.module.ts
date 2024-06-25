@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TaskClosedPage } from './task-closed.page';
+import { TaskCancelPage } from './task-cancel.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TaskClosedPage
+    component: TaskCancelPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TaskClosedPageRoutingModule {}
+export class TaskCancelPageRoutingModule {}

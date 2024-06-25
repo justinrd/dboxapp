@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-back-button/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="text-center">
+      Dbox
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline" color="primary" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row class="detail">
+      <ion-col>
+        <ion-select label="Razón" fill="outline" placeholder="Seleccionar" [(ngModel)]="motiveCancel">
+          <ion-select-option value="Cliente no contestó">Cliente no contestó</ion-select-option>
+          <ion-select-option value="Cliente no estaba en ubicación">Cliente no estaba en ubicación</ion-select-option>
+          <ion-select-option value="Cliente pide llevar otro día">Cliente pide llevar otro día</ion-select-option>
+          <ion-select-option value="Cliente pide llegar más tarde">Cliente pide llegar más tarde</ion-select-option> 
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-button style="width: 100%;" (click)="saveCancel()">
+        Enviar
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

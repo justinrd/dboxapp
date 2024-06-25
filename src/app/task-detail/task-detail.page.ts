@@ -27,9 +27,6 @@ export class TaskDetailPage implements OnInit {
 
   public photos: any = [];
 
-  public modalIsOpen: boolean = false;
-  public motiveCancel: string = "";
-
   async ngOnInit() {
     await this.storage.create();
 
@@ -209,24 +206,8 @@ export class TaskDetailPage implements OnInit {
     })
   }
 
-  async openModal() {
-    this.modalIsOpen = true;
-  }
 
-  closeModal() {
-    this.modalIsOpen = false;
-  }
-
-  async saveCancel() {
-    const sessionData = await this.storage.get('token');
-    this.apiService.get('AddNotes', 'token='+sessionData['token'] + '&task_id=' + this.id + '&notes=' + this.motiveCancel).subscribe({
-      next: data => {
-        this.decline();
-        this.modalIsOpen = false;
-        this.router.navigate(['tabs']);
-      }, error:_err => {
-        this.presentToast('No pudimos obtener los datos en este momento, intenta más tarde');
-      }
-    })
+  cancel(){
+    this.router.navigate(['task-cancel/' + this.id]);
   }
 }

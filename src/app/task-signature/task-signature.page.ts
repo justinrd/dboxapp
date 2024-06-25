@@ -48,7 +48,7 @@ export class TaskSignaturePage implements OnInit {
   async complete(){
 
     const loading = await this.loadingCtrl.create({
-      message: 'Validando tu cuenta',
+      message: 'Enviando firma...',
     });
   
     loading.present();
@@ -59,7 +59,12 @@ export class TaskSignaturePage implements OnInit {
       next: data => {
         loading.dismiss();
         this.changeStatus();
-        this.router.navigate(['/tabs']);
+
+        this.router.navigate(['/tabs'])
+        .then(() => {
+          window.location.reload();
+        });
+
       }, error: err => {
         loading.dismiss();
         this.presentToast('No pudimos obtener los datos en este momento, intenta más tarde');

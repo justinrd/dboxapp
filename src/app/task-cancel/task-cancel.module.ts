@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TaskClosedPageRoutingModule } from './task-closed-routing.module';
+import { TaskCancelPageRoutingModule } from './task-cancel-routing.module';
 
-import { TaskClosedPage } from './task-closed.page'
+import { TaskCancelPage } from './task-cancel.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TaskClosedPageRoutingModule
+    TaskCancelPageRoutingModule
   ],
-  declarations: [TaskClosedPage]
+  declarations: [TaskCancelPage]
 })
-export class TaskClosedPageModule {}
+export class TaskCancelPageModule {}

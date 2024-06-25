@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TaskClosedPage } from './task-closed.page';
+import { TaskCancelPage } from './task-cancel.page';
 
-describe('TaskClosedPage', () => {
-  let component: TaskClosedPage;
-  let fixture: ComponentFixture<TaskClosedPage>;
+describe('TaskCancelPage', () => {
+  let component: TaskCancelPage;
+  let fixture: ComponentFixture<TaskCancelPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskClosedPage);
+    fixture = TestBed.createComponent(TaskCancelPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

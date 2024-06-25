@@ -15,16 +15,16 @@ const routes: Routes = [
     loadChildren: () => import('./task-open/task-open.module').then( m => m.TaskOpenPageModule)
   },
   {
-    path: 'task-closed',
-    loadChildren: () => import('./task-closed/task-closed.module').then( m => m.TaskClosedPageModule)
-  },
-  {
     path: 'task-detail/:id',
     loadChildren: () => import('./task-detail/task-detail.module').then( m => m.TaskDetailPageModule)
   },
   {
     path: 'task-signature/:id',
     loadChildren: () => import('./task-signature/task-signature.module').then( m => m.TaskSignaturePageModule)
+  },
+  {
+    path: 'task-cancel/:id',
+    loadChildren: () => import('./task-cancel/task-cancel.module').then( m => m.TaskCancelPageModule)
   }
 ];
 @NgModule({
