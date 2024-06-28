@@ -21,10 +21,7 @@
     <ion-row class="detail">
       <ion-col>
         <ion-select label="Razón" fill="outline" placeholder="Seleccionar" [(ngModel)]="motiveCancel">
-          <ion-select-option value="Cliente no contestó">Cliente no contestó</ion-select-option>
-          <ion-select-option value="Cliente no estaba en ubicación">Cliente no estaba en ubicación</ion-select-option>
-          <ion-select-option value="Cliente pide llevar otro día">Cliente pide llevar otro día</ion-select-option>
-          <ion-select-option value="Cliente pide llegar más tarde">Cliente pide llegar más tarde</ion-select-option> 
+          <ion-select-option value="{{item.value}}" *ngFor="let item of options">{{item.text}}</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>

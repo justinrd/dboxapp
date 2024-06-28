@@ -108,8 +108,26 @@ export class TaskOpenPage implements OnInit {
         this.presentToast('No pudimos procesar los datos en este momento, intenta más tarde');
       }
     })
+  }
 
-    
+  searchTasksByCustomerName(tasks: any[], searchTerm: string): Array<any> {
+    // Handle case-insensitive search
+    const searchTermLower = searchTerm.toLowerCase();
+  
+    return tasks.filter((task) => {
+      const customerNameLower = task.customer_name.toLowerCase();
+      // Check for partial matches using includes()
+      return customerNameLower.includes(searchTermLower);
+    });
+  }
+
+  async searchByText(event: any){
+
+    if(event.detail.value == ''){
+      await this.loadTasks();
+    }else{
+      this.tasks = this.searchTasksByCustomerName(this.tasks, event.detail.value);
+    }
   }
 
 }

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class TabsPage implements OnInit {
 
   result: any = [];
+  username!: string;
 
   private storage: Storage = new Storage();
 
@@ -24,6 +25,9 @@ export class TabsPage implements OnInit {
     if(sessionData == null){
       this.router.navigate(['login']);
     }
+
+    const user = await this.storage.get('token')
+    this.username = user.username;
   }
 
   async logout(){

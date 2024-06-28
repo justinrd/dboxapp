@@ -17,6 +17,28 @@ export class TaskCancelPage implements OnInit {
 
   private id: any = null;
   private result: any = [];
+
+  options:any = [{
+    'value': 'Cédula vencida / No tiene cédula',
+    'text': 'Cédula vencida / No tiene cédula'
+  },
+  {
+    'value': 'Cliente no contestó',
+    'text': 'Cliente no contestó'
+  },
+  {
+    'value': 'Cliente no estaba en ubicación',
+    'text': 'Cliente no estaba en ubicación'
+  },
+  {
+    'value': 'Cliente pide llevar otro día',
+    'text': 'Cliente pide llevar otro día'
+  },
+  {
+    'value': 'Cliente pide llegar más tarde',
+    'text': 'Cliente pide llegar más tarde'
+  }
+]
   
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private toastController: ToastController, private router: Router) { }

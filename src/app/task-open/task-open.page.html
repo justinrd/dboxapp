@@ -6,16 +6,16 @@
       <ion-grid>
         <ion-row>
           <ion-col>{{now | date: 'dd-MM-yyy'}}</ion-col>
-          <ion-col><ion-toggle [checked]="true" (ngModelChange)="changeStatus()" [disabled]="true">{{isActive == true ? 'Activo' : 'Inactivo'}}</ion-toggle></ion-col>
+          <ion-col><ion-toggle [checked]="true" (ngModelChange)="changeStatus()" [disabled]="true">Activo</ion-toggle></ion-col>
         </ion-row>
       </ion-grid>  
     </div>
   
-    <div class="content">
-      
-  
-      
+    <div class="content"> 
       <ion-grid>
+
+        <ion-searchbar placeholder="Buscar por nombre de cliente..." (ionInput)="searchByText($event)" ></ion-searchbar>
+
         <div *ngIf="tasks.length > 0" >
           <ion-row *ngFor="let task of tasks">
             <ion-col>
