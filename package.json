@@ -1,6 +1,6 @@
 {
-  "name": "kartero",
-  "version": "0.0.1",
+  "name": "dbox",
+  "version": "2.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -27,10 +27,10 @@
     "@capacitor/camera": "^6.0.1",
     "@capacitor/core": "6.1.0",
     "@capacitor/filesystem": "^6.0.0",
-    "@capacitor/live-updates": "^0.2.1",
     "@capacitor/network": "^6.0.1",
     "@capacitor/preferences": "^6.0.1",
     "@capacitor/splash-screen": "^6.0.1",
+    "@capgo/capacitor-updater": "^6.0.33",
     "@ionic/angular": "^8.0.0",
     "@ionic/storage": "^4.0.0",
     "ionicons": "^7.0.0",

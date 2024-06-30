@@ -27,7 +27,7 @@ export class TabsPage implements OnInit {
     }
 
     const user = await this.storage.get('token')
-    this.username = user.username;
+    this.username = user.username  || 'username';
   }
 
   async logout(){

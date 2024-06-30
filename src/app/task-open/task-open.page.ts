@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
-import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-task-open',
@@ -39,6 +39,8 @@ export class TaskOpenPage implements OnInit {
     }
 
     await this.loadTasks()
+
+
   }
 
   async openDetail(id: string){
